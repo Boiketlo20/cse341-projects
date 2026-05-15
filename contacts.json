@@ -1,0 +1,31 @@
+{
+    "contact" : [
+        
+        {
+            "firstName": "Yolanda",
+            "lastName": "Nzimande",
+            "email": "nzimandeyolanda058@gmail.com",
+            "favoriteColor": "Pink",
+            "birthday": "12 February"
+        },
+
+        {
+            "firstName": "Katleho",
+            "lastName": "Manana",
+            "email": "oreratilemanana@gmail.com",
+            "favoriteColor": "Purple",
+            "birthday": "21 June"
+        },
+
+        {
+            "firstName": "Olwethu",
+            "lastName": "Thwala",
+            "email": "olwethuthwala98@gmail.com",
+            "favoriteColor": "Burgundy",
+            "birthday": "11 January"
+        }
+
+    ]
+        
+    
+}
