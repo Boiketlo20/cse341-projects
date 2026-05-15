@@ -2,7 +2,7 @@
   "name": "cse341-projects",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Boiketlo20/cse341-projects/issues"
   },
-  "homepage": "https://github.com/Boiketlo20/cse341-projects#readme"
+  "homepage": "https://github.com/Boiketlo20/cse341-projects#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
