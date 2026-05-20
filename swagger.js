@@ -5,7 +5,9 @@ const doc = {
     title: 'My API',
     description: 'Description'
   },
-  host: 'localhost:3000'
+  host  : process.env.RENDER_EXTERNAL_URL 
+      ? process.env.RENDER_EXTERNAL_URL.replace('https://', '')  
+      : 'localhost:3000'
 };
 
 const outputFile = './swagger-output.json';
