@@ -7,4 +7,10 @@ router.get('/', userCon.getAll);
 
 router.get('/:id', userCon.getOne);
 
+router.post('/', userCon.createUser);
+
+router.put('/:id', userCon.updateUser );
+
+router.delete('/:id', userCon.deleteUser);
+
 module.exports = router;
