@@ -8,6 +8,7 @@
   "host": "cse341-projects-ljwv.onrender.com",
   "basePath": "/",
   "schemes": [
+    "https",
     "http"
   ],
   "paths": {
