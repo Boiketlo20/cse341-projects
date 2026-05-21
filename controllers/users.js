@@ -3,21 +3,28 @@ const mongodb = require('../database/data');
 const { response } = require('express');
 
 const getAll = async(req, res) => {
-    const result = await mongodb.getDb().db('cse-contacts').collection('contacts').find();
-    result.toArray().then((contacts) =>{
+    try{
+        const result = await mongodb.getDb().db('cse-contacts').collection('contacts').find().toArray();
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(contacts);
-    });
-}
+        res.status(200).json(result);
+    } catch(err) {
+        res.status(500).json({message: err});
+    }   
+};
 
 const getOne = async(req, res) => {
-    const contactId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db('cse-contacts').collection('contacts').find({_id: contactId });
-    result.toArray().then((contacts) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(contacts[0]);
-    })
-}
+    if (!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Must use a valid conact id to find a contact.');
+    }
+    try{
+        const contactId = new ObjectId(req.params.id);
+        const result = await mongodb.getDb().db('cse-contacts').collection('contacts').find({_id: contactId }).toArray();
+    } catch(err) {
+        res.status(500).json({message: err});
+    }   
+    
+
+};
 
 const createUser = async (req, res) => {
     const user = {
@@ -36,6 +43,9 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Must use a valid conact id to find a contact.');
+    }
     const contactId = new ObjectId(req.params.id);
     const user = {
         firstName: req.body.firstName,
@@ -53,6 +63,9 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Must use a valid conact id to find a contact.');
+    }
     const contactId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().db('cse-contacts').collection('contacts').deleteOne({_id: contactId}, true);
     if (response.deletedCount > 0) {
